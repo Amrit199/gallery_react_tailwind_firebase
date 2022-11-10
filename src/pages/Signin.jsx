@@ -28,18 +28,16 @@ const Signin = () => {
       }
     }
   };
-
-  console.log(process.env)
   return (
-    <div className="w-full m-4">
-      <div className="text-center p-6">
+    <div className="w-full h-screen bg-[url('https://cdn.pixabay.com/photo/2017/11/04/08/14/tree-2916763_960_720.jpg')] bg-cover">
+      <div className="text-center p-6 text-white">
         <h1 className="text-3xl font-bold">Welcome to the Image Gallery</h1>
-        <h3>Please Login or create account and</h3>
-        <h3 className="text-green-800">
+        <h3 className="text-xl">Please Login or create account and</h3>
+        <h3 className="text-xl">
           get access to unlimited HD images and photos
         </h3>
       </div>
-      <div className="w-[60%] md:w-[40%] mx-auto p-6 my-5 shadow-black shadow-lg">
+      <div className="w-[60%] md:w-[40%] mx-auto p-6 my-5 shadow-black shadow-lg bg-slate-200 rounded-lg">
         <form onSubmit={handleSubmit}>
           {error ? (
             <p className="text-base font-bold text-red-700 text-center">

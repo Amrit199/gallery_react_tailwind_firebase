@@ -24,17 +24,17 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-full m-4">
-      <div className="text-center p-6">
+    <div className="w-full h-screen bg-[url('https://cdn.pixabay.com/photo/2015/07/09/22/45/tree-838667_960_720.jpg')] bg-cover">
+      <div className="text-center text-white p-6">
         <h1 className="text-3xl font-bold">Create new account</h1>
         <h2>
           If you have already account
-          <span className="text-blue-700 mx-2 underline hover:text-red-700">
+          <span className="mx-2 underline hover:text-red-700">
             <Link to="/">Sign In</Link>
           </span>
         </h2>
       </div>
-      <div className="w-[60%] mx-auto p-6 my-5 shadow-black shadow-xl">
+      <div className="w-[60%] lg:w-[40%] mx-auto p-6 my-5 bg-slate-200 shadow-black shadow-xl">
         <form onSubmit={handleSubmit}>
           <div className="my-4">
             <label className="py-2">Email Address</label>
