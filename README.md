@@ -1,6 +1,6 @@
 # Gallery with Pixabay, React, Taiwind and Firebase
 
-## live Demo https://gallery-react-tailwind-firebase.vercel.app/ 
+## <a href="https://gallery-react-tailwind-firebase.vercel.app/">Live Demo</a>
 Gallery is a collection of high resolution photos. It was build with:
 
 ##### Pixbay Api
