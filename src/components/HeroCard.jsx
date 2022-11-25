@@ -8,7 +8,7 @@ const HeroCard = ({ open, close, model }) => {
     <div>
       {model && (
         <div
-          className="fixed top-0 right-0 w-full h-screen bg-black/80 p-6"
+          className="fixed top-0 right-0 w-full h-screen bg-black/80 py-6"
           onClick={close}
         >
           <AiOutlineClose
@@ -18,7 +18,8 @@ const HeroCard = ({ open, close, model }) => {
           />
           <img
             src={model}
-            className="w-[60%] sm:w-[60%] lg:w-[50%] h-[40%] sm:h-[60%] md:h-[80%] mx-auto my-5 sm:my-10"
+            alt="hero images"
+            className="w-[90%] pt-6 sm:w-[90%] lg:w-[50%] h-[60%] sm:h-[60%] md:h-[80%] mx-auto my-5 sm:my-10 object-cover"
             onClick={(e) => {
               e.stopPropagation();
             }}
