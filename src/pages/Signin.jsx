@@ -18,7 +18,6 @@ const Signin = () => {
       navigate("/account");
     } catch (err) {
       const message = err.code.split("/");
-      console.log(message[1]);
       if (message[1] === "user-not-found") {
         setError("User not Found");
       } else if (message[1] === "wrong-password") {

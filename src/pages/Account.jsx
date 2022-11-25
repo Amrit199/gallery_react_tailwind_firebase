@@ -30,8 +30,6 @@ const Account = () => {
       .catch((err) => console.log(err));
   }, [search]);
 
-  console.log(search);
-
   return (
     <div className="w-full m-auto">
       {/* navbar section */}

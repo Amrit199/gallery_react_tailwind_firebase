@@ -9,7 +9,6 @@ const ItemCard = ({ photos }) => {
     setModel(e.target.src);
     setOpenModel(true);
   };
-  console.log(photos)
   return (
     <div className="w-full h-full bg-slate-200 px-6 py-2">
       <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 items-center justify-center">

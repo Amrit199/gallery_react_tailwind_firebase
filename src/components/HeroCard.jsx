@@ -2,7 +2,6 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const HeroCard = ({ open, close, model }) => {
-  console.log(model);
 
   if (!open) return null;
   return (

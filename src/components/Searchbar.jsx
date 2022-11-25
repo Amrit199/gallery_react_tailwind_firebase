@@ -7,8 +7,7 @@ const Searchbar = ({ searchTerm }) => {
     e.preventDefault();
     searchTerm(searchText);
   };
-
-  console.log(searchTerm);
+  
   return (
     <div
       className='w-full h-24 bg-slate-200 flex items-center justify-center'
