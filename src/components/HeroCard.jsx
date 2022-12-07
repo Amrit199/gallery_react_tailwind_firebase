@@ -2,24 +2,24 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const HeroCard = ({ open, close, model }) => {
-
+  console.log(model.webformatURL)
   if (!open) return null;
   return (
     <div>
       {model && (
         <div
-          className="fixed top-0 right-0 w-full h-screen bg-black/80 py-6"
+          className="fixed top-0 right-0 w-full h-screen bg-black/80"
           onClick={close}
         >
           <AiOutlineClose
-            size={50}
-            className="absolute top-3 right-3 cursor-pointer text-green-300 hover:text-red-300"
+            size={35}
+            className="absolute bg-white/90 rounded-xl top-1 right-1 lg:top-3 lg:right-3 cursor-pointer transition-transform text-red-700 hover:scale-110"
             onClick={close}
           />
           <img
-            src={model}
+            src={model.webformatURL}
             alt="hero images"
-            className="w-[90%] pt-6 sm:w-[90%] lg:w-[50%] h-[60%] sm:h-[60%] md:h-[80%] mx-auto my-5 sm:my-10 object-cover"
+            className="w-[90%] sm:w-[90%] lg:w-[60%] h-full pt-10 pb-4 mx-auto object-cover"
             onClick={(e) => {
               e.stopPropagation();
             }}

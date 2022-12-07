@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 const Searchbar = ({ searchTerm }) => {
   const [searchText, setSearchText] = useState("");

@@ -4,22 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const SignUp = () => {
-  const [userName, setUserName] = useState('')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const { createUser } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
       await createUser(email, password);
       navigate("/account");
       alert("Congratulations! Your account has been created.");
     } catch (e) {
-      setError(e.message);
       console.log(e.message);
     }
   };

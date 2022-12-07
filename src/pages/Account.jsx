@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaUserCircle } from 'react-icons/fa'
 import { useNavigate } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
 import Searchbar from "../components/Searchbar";
@@ -9,6 +10,7 @@ const Account = () => {
   const navigate = useNavigate();
   const [photos, setPhotos] = useState("");
   const [search, setSearch] = useState("");
+  const [showtip, setShowTip] = useState("")
 
   const handleSignOut = async () => {
     try {
@@ -30,6 +32,12 @@ const Account = () => {
       .catch((err) => console.log(err));
   }, [search]);
 
+  const showUser = () => {
+    setShowTip(<div className="flex items-center gap-3">
+    {{user} && <p className="text-xl">Welcome, {user.email}</p>}
+  </div>)
+  }
+
   return (
     <div className="w-full m-auto">
       {/* navbar section */}
@@ -47,7 +55,8 @@ const Account = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          {user && <p className="text-xl">Welcome, {user.email}</p>}
+          <FaUserCircle size={35} onClick={showUser}/>
+          {showtip}
           <button
             onClick={handleSignOut}
             className="border px-3 py-1 rounded-xl bg-blue-300 font-bold hover:bg-white hover:text-black"
