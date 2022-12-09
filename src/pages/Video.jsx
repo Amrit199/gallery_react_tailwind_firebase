@@ -5,8 +5,8 @@ import ItemCard from "../components/ItemCard";
 import Searchbar from "../components/Searchbar";
 import { UserAuth } from "../context/AuthContext";
 
-const Account = () => {
-  const { logOut, user } = UserAuth();
+const Video = () => {
+    const { logOut, user } = UserAuth();
   const navigate = useNavigate();
   const [photos, setPhotos] = useState("");
   const [search, setSearch] = useState("");
@@ -23,7 +23,7 @@ const Account = () => {
 
   useEffect(() => {
     fetch(
-      `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${search}&image_type=photo&pretty=true`
+      `https://pixabay.com/api/videos/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${search}&image_type=photo&pretty=true`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -38,7 +38,7 @@ const Account = () => {
     //   {{user} && <p className="text-xl">Welcome, {user.email}</p>}
     // </div>)
   };
-
+  console.log(photos)
   return (
     <div className="w-full m-auto">
       {/* navbar section */}
@@ -78,9 +78,9 @@ const Account = () => {
       <Link to={'/video'}>Videos</Link>
 
       {/* items section */}
-      <ItemCard photos={photos} />
+      <ItemCard photos={photos}/>
     </div>
-  );
-};
+  )
+}
 
-export default Account;
+export default Video

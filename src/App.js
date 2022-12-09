@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import Account from "./pages/Account";
 import Signin from "./pages/Signin";
 import SignUp from "./pages/SignUp";
+import Video from "./pages/Video";
 
 function App() {
 
@@ -26,6 +27,13 @@ function App() {
               </Protected>
             }
           />
+          <Route 
+          path="/video"
+          element={
+            <Protected>
+              <Video />
+            </Protected>
+          }/>
         </Routes>
       </AuthContextProvider>
     </div>
