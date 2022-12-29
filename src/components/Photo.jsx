@@ -22,7 +22,7 @@ const Photo = ({ data,  modelimg, modelset }) => {
           </div>
         </div>
       </div>
-      <img src={data.webformatURL} key={data.id} alt={data.tags} onClick={handleClick} className="w-full"></img>
+      <img src={data.webformatURL} key={data.id} alt={data.tags} onClick={handleClick} className="w-full rounded-t-2xl"></img>
       <div className="bg-blue-300 font-bold px-2 rounded-b-3xl">
         <div className="flex items-center justify-around">
           <div className="flex items-center gap-1 p-1 rounded-xl">
@@ -40,13 +40,13 @@ const Photo = ({ data,  modelimg, modelset }) => {
         </div>
         <div className="w-full h-[1px] bg-black my-1"></div>
         <div className="flex items-center justify-around">
-          <div className="flex items-center gap-1 p-1 rounded-xl transition-transform hover:scale-110 lg:hover:scale-105">
+          <div className="flex items-center gap-1 p-1 rounded-xl transition-transform ease-in hover:scale-110 lg:hover:scale-125">
             Like
           </div>
-          <div className="flex items-center p-1 gap-1 rounded-xl transition-transform hover:scale-110 lg:hover:scale-105">
+          <div className="flex items-center p-1 gap-1 rounded-xl transition-transform hover:scale-110 lg:hover:scale-125">
             Download
           </div>
-          <div className="flex items-center p-1 gap-1 rounded-xl transition-transform hover:scale-110 lg:hover:scale-105">
+          <div className="flex items-center p-1 gap-1 rounded-xl transition-transform hover:scale-110 lg:hover:scale-125">
             Share
           </div>
         </div>

@@ -75,8 +75,6 @@ const Account = () => {
       {/* search bar section */}
       <Searchbar searchTerm={(text) => setSearch(text)} />
 
-      <Link to={'/video'}>Videos</Link>
-
       {/* items section */}
       <ItemCard photos={photos} />
     </div>
