@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
-import Searchbar from "../components/Searchbar";
 import { UserAuth } from "../context/AuthContext";
+import { AiOutlineSearch } from "react-icons/ai";
+import axios from "axios";
 
 const Account = () => {
   const { logOut, user } = UserAuth();
@@ -11,6 +12,7 @@ const Account = () => {
   const [photos, setPhotos] = useState("");
   const [search, setSearch] = useState("");
   const [showtip, setShowTip] = useState(false);
+
 
   const handleSignOut = async () => {
     try {
@@ -21,61 +23,79 @@ const Account = () => {
     }
   };
 
-  useEffect(() => {
-    fetch(
-      `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${search}&image_type=photo&pretty=true`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setPhotos(data.hits);
-      })
-      .catch((err) => console.log(err));
-  }, [search]);
-
   const showUser = () => {
     setShowTip(!showtip);
-    //   setShowTip(<div className="flex items-center gap-3">
-    //   {{user} && <p className="text-xl">Welcome, {user.email}</p>}
-    // </div>)
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${search}&image_type=photo&pretty=true`
+      )
+      .then((response) => setPhotos(response.data.hits))
+      .catch((error) => console.log(error));
+  },[search]);
 
   return (
     <div className="w-full m-auto">
-      {/* navbar section */}
-      <div className="w-full px-6 py-2 flex items-center justify-between text-xl bg-slate-200">
-        <div className="flex items-center gap-2">
-          <div className="w-[3rem]">
-            <img
-              src="/assets/logo.png"
-              alt=""
-              className="w-full h-full rounded-lg"
+      {/* navbar section, search button */}
+      <div className="w-full h-[500px] relative bg-home bg-no-repeat bg-cover bg-center bg-fixed">
+        <img
+          src="/assets/logo.png"
+          alt=""
+          className="absolute top-4 left-6 w-16 rounded-lg cursor-pointer hover:opacity-80"
+        />
+        <div className="absolute top-4 right-6">
+          <div className="flex items-center gap-3">
+            <FaUserCircle
+              size={35}
+              onClick={showUser}
+              className="cursor-pointer hover:scale-110 text-blue-500"
             />
-          </div>
-          <div>
-            <h1>Gallery</h1>
+            {showtip ? (
+              <div className="flex items-center gap-3">
+                {{ user } && <p className="text-xl">Welcome, {user.email}</p>}
+              </div>
+            ) : (
+              ""
+            )}
+            <button
+              onClick={handleSignOut}
+              className="border px-3 py-1 rounded-xl bg-blue-300 font-bold hover:bg-white hover:text-black"
+            >
+              Logout
+            </button>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <FaUserCircle size={35} onClick={showUser} className="cursor-pointer"/>
-          {showtip ? (
-            <div className="flex items-center gap-3">
-              {{ user } && <p className="text-xl">Welcome, {user.email}</p>}
-            </div>
-          ) : (
-            ""
-          )}
-          <button
-            onClick={handleSignOut}
-            className="border px-3 py-1 rounded-xl bg-blue-300 font-bold hover:bg-white hover:text-black"
-          >
-            Logout
-          </button>
+        <div className="w-[80%] lg:w-[50%] mx-auto h-full text-white flex flex-col items-start justify-center gap-8">
+          <h1 className="text-3xl font-bold">
+            The best free stock photos, royalty free images shared by creators.
+          </h1>
+          <div className="w-full flex items-center justify-center">
+            <form onSubmit={handleSubmit} className="w-full relative">
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                placeholder="eg. computer, cats, mountains"
+                className="px-3 py-2 rounded-lg w-full text-black"
+              />
+              <AiOutlineSearch
+                size={30}
+                onClick={handleSubmit}
+                className="absolute top-[50%] right-2 transform translate-y-[-50%] cursor-pointer text-black"
+              />
+            </form>
+          </div>
+          <p className="font-bold">
+            Trending: crap, landscape, beautiful, nature, car
+          </p>
         </div>
       </div>
-      {/* search bar section */}
-      <Searchbar searchTerm={(text) => setSearch(text)} />
 
-      {/* items section */}
       <ItemCard photos={photos} />
     </div>
   );
