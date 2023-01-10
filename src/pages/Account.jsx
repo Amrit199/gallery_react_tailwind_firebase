@@ -57,7 +57,7 @@ const Account = () => {
               className="cursor-pointer hover:scale-110 text-blue-500"
             />
             {showtip ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 text-white">
                 {{ user } && <p className="text-xl">Welcome, {user.email}</p>}
               </div>
             ) : (
